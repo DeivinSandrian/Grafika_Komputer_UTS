@@ -1,0 +1,44 @@
+<!--
+UTS Grafika Komputer
+NRP : 2372007, 2372024, 2372044
+Nama : Deivin, Marcel, Kyle 
+-->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>UTS Grafika Komputer</title>
+</head>
+<body>
+    <canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+
+    <script src="lib/grafika_lib.js"></script>
+    <script src="lib/transform.js"></script>
+    <script src="lib/uts.js"></script>
+
+    <script>
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+
+    // Data Dummy, Nanti diganti Data Dinamis 
+    const boxes = [
+        {x: 50,  y: 350, width: 80, height: 100, value: 25},
+        {x: 150, y: 350, width: 80, height: 100, value: 10},
+        {x: 250, y: 350, width: 80, height: 100, value: 40},
+        {x: 350, y: 350, width: 80, height: 100, value: 70},
+        {x: 450, y: 350, width: 80, height: 100, value: 15}
+    ];
+
+    drawBoxes(imageData, boxes);
+    
+    const claw = { x: 70, y: 100, width: 60, height: 30};
+    drawClaw(imageData, claw);
+
+    ctx.putImageData(imageData, 0, 0);
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    redraw(ctx, canvas, boxes, claw);
+    </script>
+</body>
+</html>
