@@ -10,27 +10,27 @@ Nama : Deivin, Marcel, Kyle
 </head>
 <body>
     <canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
-    
+
     <script src="lib/grafika_lib.js"></script>
     <script src="lib/transform.js"></script>
-    
+    <script src="lib/uts.js"></script>
+
     <script>
-        var canvas = document.querySelector("#myCanvas");
-        var ctx = canvas.getContext("2d");
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
-        var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-        
-        // Gambar Kotak merah
-        var kotak1 = rectPointArray(50, 60, 80, 100);
-        polygon(imageData, kotak1, 255, 0, 0);
-        
-        var kotak2 = rectPointArray(150, 60, 80, 100);
-        polygon(imageData, kotak2, 255, 0, 0);
+    // Data Dummy, Nanti diganti Data Dinamis 
+    const boxes = [
+        {x: 50,  y: 350, width: 80, height: 100, value: 25},
+        {x: 150, y: 350, width: 80, height: 100, value: 10},
+        {x: 250, y: 350, width: 80, height: 100, value: 40},
+        {x: 350, y: 350, width: 80, height: 100, value: 70},
+        {x: 450, y: 350, width: 80, height: 100, value: 15}
+    ];
 
-        var kotak3 = rectPointArray(250, 60, 80, 100);
-        polygon(imageData, kotak3, 255, 0, 0);
-
-        ctx.putImageData(imageData, 0, 0);
+    drawBoxes(imageData, boxes);
+    ctx.putImageData(imageData, 0, 0);
     </script>
 </body>
 </html>
