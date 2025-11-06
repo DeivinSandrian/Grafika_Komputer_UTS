@@ -39,6 +39,15 @@ Nama : Deivin, Marcel, Kyle
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     
     redraw(ctx, canvas, boxes, claw);
+    moveClawDown(150, 2, function() {
+        moveClawRight(150, 2, function() {
+            moveClawUp(150, 2, function() {
+                moveClawLeft(150, 2, function() {
+                console.log("Animasi selesai!");
+                });
+            });
+        });
+    });
     </script>
 </body>
 </html>
