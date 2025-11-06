@@ -7,8 +7,77 @@ Nama : Deivin, Marcel, Kyle
 <html>
 <head>
     <title>UTS Grafika Komputer</title>
+<style>
+    body {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        background: #f0f4f8;
+    }
+
+    h1 {
+        text-align: center;
+    }
+    
+    /* Kotak kontrol */
+    .controls {
+        margin-bottom: 20px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    input {
+        padding: 10px 10px;
+        border: 1px solid #afcf91;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: border 0.2s;
+    }
+    input:focus {
+        outline: none;
+        border-color: #3498db;
+    }
+    button {
+        padding: 10px 15px;
+        border: none;
+        border-radius: 6px;
+        font-size: 16px;
+        font-weight: 600;
+        transition: 0.2s ease-in;
+    }
+
+    #setDataBtn  { background: #3498db; color: white; }
+    #randomBtn   { background: #e67e22; color: white; }
+    #startBtn    { background: #27ae60; color: white; }
+
+    button:hover {
+      transform: translateY(-1px);
+    }
+    #setDataBtn:hover  { background: #2980b9; }
+    #randomBtn:hover   { background: #d35400; }
+    #startBtn:hover    { background: #219653; }
+
+    select {
+        padding: 10px 15px;
+        border: 1px solid #afcf91;
+        border-radius: 6px;
+        font-size: 16px;
+        background: white;
+    }
+
+    canvas {
+        display: block;
+        margin: auto;
+        background: white;
+        border-radius: 12px;
+        box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+        max-width: 100%;
+    }
+</style>
 </head>
 <body>
+<h1>Visualisasi Selection Sort</h1>
 <div class="controls" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px">
     <input id="valuesInput" placeholder="Contoh: 25, 10, 40, 70, 15" style="width:420px" value="25, 10, 40, 70, 15" />
     <button id="setDataBtn">Set Data</button>
@@ -20,7 +89,7 @@ Nama : Deivin, Marcel, Kyle
     <button id="startBtn">Start Sort</button>
 </div>
 
-<canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+<canvas id="myCanvas" width="1200" height="800" style="border:1px solid #000000;"></canvas>
 <script src="lib/grafika_lib.js"></script>
 <script src="lib/transform.js"></script>
 <script src="lib/uts.js"></script>
