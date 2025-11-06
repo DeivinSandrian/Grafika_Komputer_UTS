@@ -17,7 +17,6 @@ Nama : Deivin, Marcel, Kyle
         text-align: center;
     }
     
-    /* Kotak kontrol */
     .controls {
         margin-bottom: 20px;
         background: white;
@@ -101,13 +100,18 @@ ctx.fillStyle = "#000";
 ctx.textAlign = "center";
 ctx.textBaseline = "middle";
 
+// x awal supaya tidak terlalu kiri
 let x_start = 40;
+// x akhir supaya tidak terlalu kanan
 let area_width = canvas.width - 80;
+// y dasar area kotak
 let area_baseY = canvas.height - 60;
+// banyak maksimal kotak
 let MAX_COUNT = 15;
 let animation_speed = 10
 let boxes = [];
 
+// Untuk menyimpan ID animasi yang akan dihentikan jika perlu
 let animations_id = [];
 
 let claw_A = {
@@ -131,6 +135,7 @@ let carrying_B = null;
 let mode_min = true;
 let is_sorting = false;
 
+// Event Handlers
 let values_input = document.getElementById("valuesInput");
 
 document.getElementById("setDataBtn").onclick = function () {
@@ -152,6 +157,5 @@ document.getElementById("modeSelect").onchange = function () {
 // Inisialisasi dengan data random
 createRandomData();
 </script>
-
 </body>
 </html>
