@@ -9,28 +9,80 @@ Nama : Deivin, Marcel, Kyle
     <title>UTS Grafika Komputer</title>
 </head>
 <body>
-    <canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+<div class="controls" style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:8px">
+    <input id="valuesInput" placeholder="Contoh: 25, 10, 40, 70, 15" style="width:420px" value="25, 10, 40, 70, 15" />
+    <button id="setDataBtn">Set Data</button>
+    <button id="randomBtn">Random</button>
+    <select id="modeSelect">
+        <option value="min" selected>Selection Sort - Min</option>
+        <option value="max">Selection Sort - Max</option>
+    </select>
+    <button id="startBtn">Start Sort</button>
+</div>
 
-    <script src="lib/grafika_lib.js"></script>
-    <script src="lib/transform.js"></script>
-    <script src="lib/uts.js"></script>
+<canvas id="myCanvas" width="800" height="800" style="border:1px solid #000000;"></canvas>
+<script src="lib/grafika_lib.js"></script>
+<script src="lib/transform.js"></script>
+<script src="lib/uts.js"></script>
+<script>
+let canvas = document.getElementById("myCanvas");
+let ctx = canvas.getContext("2d");
+ctx.font = "16px Arial";
+ctx.fillStyle = "#000";
+ctx.textAlign = "center";
+ctx.textBaseline = "middle";
 
-    <script>
-    const canvas = document.getElementById("myCanvas");
-    const ctx = canvas.getContext("2d");
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+let x_start = 40;
+let area_width = canvas.width - 80;
+let area_baseY = canvas.height - 60;
+let MAX_COUNT = 15;
+let animation_speed = 10
+let boxes = [];
 
-    // Data Dummy, Nanti diganti Data Dinamis 
-    const boxes = [
-        {x: 50,  y: 350, width: 80, height: 100, value: 25},
-        {x: 150, y: 350, width: 80, height: 100, value: 10},
-        {x: 250, y: 350, width: 80, height: 100, value: 40},
-        {x: 350, y: 350, width: 80, height: 100, value: 70},
-        {x: 450, y: 350, width: 80, height: 100, value: 15}
-    ];
+let animations_id = [];
 
-    drawBoxes(imageData, boxes);
-    ctx.putImageData(imageData, 0, 0);
-    </script>
+let claw_A = {
+    x: 100,
+    y: 100,
+    width: 60,
+    height: 30,
+    label: "A"
+};
+
+let claw_B = {
+    x: 200,
+    y: 100,
+    width: 60,
+    height: 30,
+    label: "B"
+};
+
+let carrying_A = null;
+let carrying_B = null;
+let mode_min = true;
+let is_sorting = false;
+
+let values_input = document.getElementById("valuesInput");
+
+document.getElementById("setDataBtn").onclick = function () {
+    setDataFromString(values_input.value);
+};
+
+document.getElementById("randomBtn").onclick = function () {
+    createRandomData();
+};
+
+document.getElementById("startBtn").onclick = function () {
+    selectionSort();
+};
+
+document.getElementById("modeSelect").onchange = function () {
+    mode_min = this.value === "min";
+};
+
+// Inisialisasi dengan data random
+createRandomData();
+</script>
+
 </body>
 </html>
